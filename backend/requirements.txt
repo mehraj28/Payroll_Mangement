@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+passlib[bcrypt]
+python-jose[cryptography]
+python-multipart
+pydantic
+reportlab
+python-dotenv
+aiofiles
