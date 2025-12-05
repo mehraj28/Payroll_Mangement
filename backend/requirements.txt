@@ -8,3 +8,5 @@ pydantic
 reportlab
 python-dotenv
 aiofiles
+email-validator
+pydantic[email]
