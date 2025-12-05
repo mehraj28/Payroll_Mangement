@@ -1,39 +1,95 @@
-# Payroll Management System (Full Stack)
+📘 Payroll Management System
+A full-stack payroll and employee expense management platform built with FastAPI, SQLModel, React, and TailwindCSS.
+Supports Admin & Employee roles, salary slip management, expense tracking, and PDF export.
+________________________________________
+🌐 Live Demo
+•	Frontend (Netlify): https://payrolltask1.netlify.app/
+•	Backend (Render): https://payroll-mangement.onrender.com
+•	API Docs: https://payroll-mangement.onrender.com/docs
+________________________________________
+🔐 Demo Credentials
+A seeded administrator user is automatically created during backend startup:
+Role	Email	Password
+Admin (Seeded)	hire-me@anshumat.org	HireMe@2025!
+Admin (Test)	admin@example.com	admin123
+You may also sign up as Employee or Admin from the frontend.
+________________________________________
+📌 Features
+🔑 Authentication & User Access
+•	JWT-based Login/Signup
+•	Role-based routing (Admin & Employee)
+•	/auth/me for session persistence
+________________________________________
+🧑‍💼 Admin Features
+•	Create salary slips
+•	Update existing salary slips
+•	View all employees
+•	View pending employee expenses
+•	Approve/Reject employee expenses
+•	Export salary slips as PDF
+API Endpoints (Admin):
+Method	Endpoint	Description
+POST	/admin/salary-slip	Create salary slip
+PUT	/admin/salary-slip/{slip_id}	Update salary slip
+GET	/admin/expenses/pending	List pending expenses
+POST	/admin/expenses/{expense_id}/action	Approve/Reject expense
+GET	/admin/salary-slip/{slip_id}/pdf	Download salary slip PDF
+GET	/admin/employees	List employees
+________________________________________
+👨‍💻 Employee Features
+•	Submit monthly expenses
+•	View salary slips
+•	View personal expense history
+•	Download salary slip PDF
+API Endpoints (Employee):
+Method	Endpoint	Description
+GET	/employee/salary-slip	View salary slips
+POST	/employee/expense	Submit expense
+GET	/employee/expense	View expense history
+GET	/employee/salary-slip/{slip_id}/pdf	Download salary slip PDF
+________________________________________
+⭐ Optional Features Implemented
+•	Data visualization (charts for salary & expenses)
+•	Expense approval workflow
+•	PDF export functionality
+•	Clean dashboards for both Admin & Employees
+________________________________________
+🏗️ Tech Stack
+Frontend
+•	React (Vite)
+•	TailwindCSS
+•	React Router
+•	Axios
+Backend
+•	FastAPI
+•	SQLModel + SQLite
+•	JWT Authentication
+•	OAuth2PasswordRequestForm
+•	CORS-enabled API
+Deployment
+•	Frontend: Netlify
+•	Backend: Render
+•	Database: SQLite bundled with backend
+________________________________________
+🔌 API Documentation
+FastAPI Swagger UI is available at:
+🔗 https://payroll-mangement.onrender.com/docs
+Includes:
+•	Authentication
+•	Admin routes
+•	Employee routes
+•	Schema definitions
 
-## Overview
-This project contains a FastAPI backend and a React + Tailwind frontend for a simple payroll management system.
-It implements:
-- Signup / Login (JWT)
-- Admin: create/update salary slips, view pending expenses
-- Employee: submit expenses, view salary slips and expense history
-- PDF export for salary slips (ReportLab)
-- Simple email notification stub (console)
+🚀 Running Locally
 
-## Quick Start
+Backend:
+cd backend
+pip install -r requirements.txt
+uvicorn app.main:app –reload
 
-### Backend
-1. Create virtual env:
-   ```bash
-   cd backend
-   python -m venv .venv
-   source .venv/bin/activate   # Windows: .venv\Scripts\activate
-   pip install -r requirements.txt
-   ```
-2. Set env vars in `.env` (SECRET_KEY, DATABASE_URL)
-3. Start server:
-   ```bash
-   uvicorn app.main:app --reload --port 8000
-   ```
-4. API docs: http://127.0.0.1:8000/docs
+Frontend:
+cd frontend
+npm install
+npm run dev
 
-### Frontend
-1. Install dependencies and run:
-   ```bash
-   cd frontend
-   npm install
-   npm run dev
-   ```
-2. Open the Vite dev URL (usually http://localhost:5173)
 
-## Notes
-- This is a starter implementation. For production, switch to PostgreSQL, secure SECRET_KEY, enable CORS restrictions, add email provider, and strengthen validation.
