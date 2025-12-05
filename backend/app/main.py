@@ -16,6 +16,10 @@ from app.routes_employee import router as employee_router
 app = FastAPI(title="Payroll Management API")
 
 
+@app.get("/")
+def home():
+    return {"message": "Backend is connected"}
+
 def seed_demo_user():
     with Session(database.engine) as session:
         existing = session.exec(select(User).where(User.email == "hire-me@anshumat.org")).first()
